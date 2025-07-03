@@ -11,7 +11,3 @@ Search examples:
 * ![screenshot](github/explorer.png)
 
 * ![screenshot](github/property-search.png)
-
-# Code points
-* `1753`: Search function
-* `5006`: Setup icon sheet
