@@ -14,4 +14,4 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/loglizzy/better-dex/r
 ![screenshot](github/property-search.png)
 
 # Contribute
-Wanna change anything just commit to the alternative branch(ik nobody is going to but ok)
+Wanna change anything just commit to the `dev` branch(ik nobody is going to but ok)
