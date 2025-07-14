@@ -6,8 +6,9 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/loglizzy/better-dex/r
 # Features
 * Modern icons([Vanilla 3](https://elttob.itch.io/vanilla-3-for-roblox-studio?download))
 * Explorer search by properties
-  * `"ClassName=Part"` to see all the `Parts`
-  * `"Name=Model,Parent=Folder"` to see `Models` inside some instance named `Folder`
+  * `"classname=Part"` to see all the `Parts`
+  * `"name=Model,parent=Folder"` to see `Models` inside some instance named `Folder`
+  * `"value=100,classname=ValueBase"` to maybe find a number/int value storing some money info
 
 # Screenshots
 ![screenshot](github/explorer.png)
