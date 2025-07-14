@@ -13,6 +13,3 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/loglizzy/better-dex/r
 # Screenshots
 ![screenshot](github/explorer.png)
 ![screenshot](github/property-search.png)
-
-# Contribute
-Wanna change anything just commit to the `dev` branch(ik nobody is going to but ok)
