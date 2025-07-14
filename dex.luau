@@ -1754,6 +1754,14 @@ local EmbeddedModules = {
 			    return a[b]
 			end
 
+			local propertyNameMap = {}
+			for i, v in API.Classes do
+			    for i, v in v.Properties do
+					local name = v.Name
+                    propertyNameMap[name:lower()] = name
+                end
+			end
+
 			Explorer.DoSearch = function(query)
 				table.clear(Explorer.SearchExpanded)
 				table.clear(searchResults)
@@ -1769,12 +1777,15 @@ local EmbeddedModules = {
 
 				local defaultSearch = (function(Obj, str) return (Obj.Name:lower()):find(str, 1, true) end)
 
-				local properties = {}
+				local searchProperties = {}
 				local skipDefaultSearch = false
 				for pair in string.gmatch(query, "([^,]+)") do
                     local key, value = string.match(pair, "([^=]+)=([^=]+)")
                     if key and value then
-                        properties[key] = value:lower()
+                        key = propertyNameMap[key:lower()]
+                        if not key then continue end
+
+                        searchProperties[key] = value:lower()
                         skipDefaultSearch = true
                     end
 				end
@@ -1783,20 +1794,17 @@ local EmbeddedModules = {
 					local expandedpar = false
 					for _,node in ipairs(root) do
 					    local obj = node.Obj
-						local passed = true
 						local matched = false
-					    for i, v in properties do
-							local ok, objValue = pcall(Index, obj, i)
-							if ok and objValue then
-			                    if tostring(objValue):lower() == v then
-									matched = true
-								else
-									passed = false
-								end
+					    for propertyName, expectedValue in searchProperties do
+			                if tostring(obj[propertyName]):lower() == expectedValue then
+								matched = true
+							else
+							    matched = false
+								break
 							end
 						end
 
-						if passed and (matched or (func and func(obj, str))) then
+						if matched or (func and func(obj, str)) then
 							expandTable[node] = 0
 							searchResults[node] = true
 							if not expandedpar then
