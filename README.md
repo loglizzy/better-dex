@@ -1,4 +1,5 @@
 # Usage
+Just execute that:
 ```lua
 loadstring(game:HttpGet("https://raw.githubusercontent.com/loglizzy/better-dex/refs/heads/main/dex.luau"))()
 ```
